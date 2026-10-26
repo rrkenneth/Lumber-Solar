@@ -265,7 +265,7 @@ tr:last-child td{border-bottom:0}
 .why li{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
 .why li::before{content:"✓";flex:none;width:24px;height:24px;border-radius:50%;background:var(--cyan);color:var(--navy);display:grid;place-items:center;font-weight:700;font-size:.8rem;margin-top:2px}
 .contact-line{font-size:.98rem;color:var(--muted)}
-.contact-line b{color:var(--ink);font-family:var(--f-mono);font-weight:600}
+.contact-line b,.contact-line a{color:var(--ink);font-family:var(--f-mono);font-weight:600}
 
 /* Preguntas */
 .faq details{max-width:860px}
@@ -591,7 +591,7 @@ footer .h{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-t
           <li>Consulta disponibilidad de instalación en tu municipio.</li>
           <li>Envíos por USPS a Puerto Rico y Estados Unidos.</li>
         </ul>
-        <p class="contact-line">¿Prefieres hablar? Escríbenos por WhatsApp al <b id="leadPhone"></b>.</p>
+        <p class="contact-line">¿Prefieres hablar? Escríbenos por WhatsApp o llámanos al <a href="#" id="leadPhone"></a>.</p>
         <div class="panel" id="quoteSummary" style="gap:10px"></div>
       </div>
       <div class="panel" id="leadPanel">
@@ -650,7 +650,8 @@ footer .h{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-t
     <div>
       <p class="h">Contacto</p>
       <ul aria-label="Contacto">
-        <li>WhatsApp y teléfono: <a data-wa="Hola, quiero información sobre los equipos de Lumbre Solar." href="#" target="_blank" rel="noopener" class="mono" id="footWa"></a></li>
+        <li>WhatsApp: <a data-wa="Hola, quiero información sobre los equipos de Lumbre Solar." href="#" target="_blank" rel="noopener" class="mono" id="footWa"></a></li>
+        <li>Teléfono: <a href="#" class="mono" id="footTel"></a></li>
         <li>Email: <a id="footMail" href="#"></a></li>
         <li>Instagram: <a id="footIg" href="#" target="_blank" rel="noopener"></a></li>
         <li>Facebook: <span id="footFb"></span></li>
@@ -698,7 +699,8 @@ const CONFIG = {
   dueno: "Kenneth Román",
   telefono: "939-297-5395",
   whatsapp: "19392975395",               // número para enlaces wa.me, con código de país
-  email: "lumbresolar@gmail.com",
+  tel: "+19392975395",                   // número para enlaces tel: (llamar)
+  email: "info@lumbresolar.com",
   instagram: "lumbresolar",
   facebook: "Lumbre Solar",              // sin enlace hasta confirmar la URL de la página
   instUna: 60,                           // instalación cuando se instala una sola unidad
@@ -1465,6 +1467,7 @@ function showLeadResult(snap, res){
 /* ===== Contacto ===== */
 document.querySelectorAll("[data-wa]").forEach(a=>a.href=waLink(a.dataset.wa));
 $("footWa").textContent=CONFIG.telefono;
+$("footTel").textContent=CONFIG.telefono; $("footTel").href=`tel:${CONFIG.tel}`;
 $("footMail").textContent=CONFIG.email; $("footMail").href=`mailto:${CONFIG.email}`;
 $("footIg").textContent="@"+CONFIG.instagram; $("footIg").href=`https://www.instagram.com/${CONFIG.instagram}/`;
 $("footFb").textContent=CONFIG.facebook;
@@ -1502,7 +1505,7 @@ document.querySelectorAll("[data-show]").forEach(b=>b.addEventListener("click",(
     const c=document.createElement("td"); c.className="num"; c.textContent=`${x.real}W`;
     tr.append(a,b,c); tb.append(tr); }
 })();
-$("leadPhone").textContent=CONFIG.telefono;
+$("leadPhone").textContent=CONFIG.telefono; $("leadPhone").href=`tel:${CONFIG.tel}`;
 $("closePhone").textContent=`WhatsApp y teléfono: ${CONFIG.telefono}`;
 </script>
 </body></html>
