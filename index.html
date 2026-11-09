@@ -535,12 +535,12 @@ dialog::backdrop{background:rgba(11,27,44,.7)}
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Instalación en Puerto Rico</span><h2>Nosotros lo montamos</h2></div>
-      <p>Instalamos los focos comprados con nosotros. Consulta disponibilidad de instalación en tu municipio.</p>
+      <p>Instalamos los focos comprados con nosotros. Es una instalación básica en casas, terreras o postes ya instalados, a no más de 3.5 metros de altura. Consulta disponibilidad de instalación en tu municipio.</p>
     </div>
     <div class="pasos">
       <div class="paso"><span>PASO 1</span><h3>Cotizas</h3><p>Arma tu lista o tu plan y pide tu cotización en línea o por WhatsApp.</p></div>
-      <div class="paso"><span>PASO 2</span><h3>Confirmamos</h3><p>Repasamos contigo los focos, la dirección y la fecha.</p></div>
-      <div class="paso"><span>PASO 3</span><h3>Instalamos</h3><p>Montaje en pared o poste y el panel orientado al mejor sol.</p></div>
+      <div class="paso"><span>PASO 2</span><h3>Confirmamos</h3><p>Te pedimos fotos de donde quieres el foco y repasamos contigo los focos, la dirección y la fecha.</p></div>
+      <div class="paso"><span>PASO 3</span><h3>Instalamos</h3><p>Montaje en la pared o en un poste ya instalado, hasta 3.5 metros de altura, con el panel orientado al mejor sol.</p></div>
       <div class="paso"><span>PASO 4</span><h3>Te explicamos</h3><p>Los modos, el control remoto y cómo cuidar el panel. Tu foco queda con 1 año de garantía.</p></div>
     </div>
     <div class="tarifas">
@@ -578,6 +578,7 @@ dialog::backdrop{background:rgba(11,27,44,.7)}
       <details><summary>¿Qué pasa con varios días nublados?</summary><p>Los paneles siguen cargando con luz difusa, pero menos, y la luz puede durar menos. Al instalar orientamos cada panel al mejor sol disponible y te explicamos qué modo conviene.</p></details>
       <details><summary>¿Aguantan la lluvia?</summary><p>Son equipos de exterior. Los focos de 60W, 300W y 800W indican protección IP65 contra agua y polvo.</p></details>
       <details><summary>¿Tienen garantía?</summary><p>Sí. Los focos que compras sin instalación tienen 6 meses de garantía y los que te instalamos tienen 1 año. La garantía cuenta desde el día de la compra y cubre cualquier daño eléctrico del foco. Si pasa, nos escribes por WhatsApp con una foto del recibo de compra, nos envías el foco y te enviamos uno nuevo. No incluye visita ni reinstalación, y los gastos de envío (el del foco dañado y el del nuevo) los cubre el cliente.</p></details>
+      <details><summary>¿Qué incluye la instalación?</summary><p>Es una instalación básica en casas, terreras o postes ya instalados, a no más de 3.5 metros de altura. Antes de confirmar, te pedimos fotos de donde quieres el foco para ver que se pueda instalar. Si el lugar necesita otro tipo de trabajo, te lo decimos antes.</p></details>
       <details><summary>¿Puedo comprar sin instalación?</summary><p>Sí. Todos los focos se venden solos y te los enviamos. La instalación es opcional y solo en Puerto Rico.</p></details>
       <details><summary>¿Envían fuera de Puerto Rico?</summary><p>Sí, enviamos a Estados Unidos. Estimamos $16 a $20 por paquete dentro de Puerto Rico y $35 a $50 a Estados Unidos, según el tamaño del foco. Son estimados que se confirman según caja, peso y destino.</p></details>
       <details><summary>¿Venden baterías portátiles o placas solares para la casa?</summary><p>Todavía no. Hoy nos enfocamos en focos solares. Las baterías portátiles y los sistemas solares para el hogar son planes para más adelante. Si te interesan, menciónalo en tu solicitud.</p></details>
@@ -791,7 +792,7 @@ function generarPlan(){
     el("div",{className:"filas"}, el("div",{},el("span",{textContent:"Focos"}),el("span",{textContent:money(equipos)})), el("div",{},el("span",{textContent:`Instalación (${unidades} × ${money(unidades===1?INST_UNA:INST_VARIAS)})`}),el("span",{textContent:money(inst)})), el("div",{className:"total"},el("span",{textContent:"Total estimado (IVU incluido)"}),el("span",{textContent:money(equipos+inst)}))));
   const usar=el("button",{type:"button",className:"btn cian",textContent:"Añadir el plan a mi cotización"}); usar.onclick=()=>{ planAdjunto={titular:plan.querySelector("h3").textContent.slice(0,120), items:planActual.map(i=>({id:i.id, cantidad:i.q, area:i.areas.join(", ").slice(0,160)}))}; if(dest!=="pr"){ document.querySelector("input[name=dest][value=pr]").click(); } planActual.forEach(i=>addToCart(i.id,i.q,true)); $("cotizar").scrollIntoView({behavior:"smooth"}); };
   const wa=el("a",{className:"btn claro",target:"_blank",rel:"noopener",textContent:"Pedirlo por WhatsApp",href:waLink(`Hola, armé este plan en la página: ${planActual.map(i=>`${i.q} × ${byId[i.id].n}`).join(", ")}. Total estimado ${money(equipos+inst)} con instalación (IVU incluido).`)});
-  plan.append(el("div",{className:"acc"},usar,wa), el("p",{className:"nota-plan",textContent:"Con instalación, cada foco queda con 1 año de garantía. La confirmamos contigo antes de instalar: puede variar según altura, superficie y distancia. Si combinas modelos distintos, la instalación es un estimado sujeto a confirmación."}));
+  plan.append(el("div",{className:"acc"},usar,wa), el("p",{className:"nota-plan",textContent:"Con instalación, cada foco queda con 1 año de garantía. Es una instalación básica en casas, terreras o postes ya instalados, hasta 3.5 metros de altura. Antes de confirmarla te pedimos fotos de donde quieres el foco. Si combinas modelos distintos, la instalación es un estimado sujeto a confirmación."}));
 }
 $("formAsesor").addEventListener("submit",e=>{ e.preventDefault(); generarPlan(); });
 
